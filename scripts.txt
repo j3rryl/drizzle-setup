@@ -12,3 +12,6 @@ generate whenever changes to schema generates another sql file for you! imo
 drizzle-kit drop lets you delete previously generated migrations from migrations folder
 
 Please don’t delete any files in migrations folder manually, it might break drizzle-kit
+
+
+npx auth secret
