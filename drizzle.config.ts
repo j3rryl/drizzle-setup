@@ -10,6 +10,6 @@ export default defineConfig({
     database: "test1234",
   },
   out: "./drizzle",
-  verbose: true,
+  //   verbose: true,
   strict: true,
 });

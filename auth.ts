@@ -19,5 +19,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       from: process.env.EMAIL_FROM,
     }),
   ],
+  callbacks: {
+    session({ session, user }) {
+      console.log("callback user", user);
+
+      session.user.id = user.id;
+      session.user.role = user.role;
+      return session;
+    },
+  },
   adapter: DrizzleAdapter(db),
 });
