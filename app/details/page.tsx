@@ -1,11 +1,9 @@
 import React from "react";
 import DetailCard from "./DetailCard";
-import { allUsers } from "@/functions";
+import { getUsers } from "@/functions";
 import ChangeRole from "./ChangeRole";
-// export const dynamic = "force-dynamic";
-export const revalidate = 2;
-const Page = () => {
-  const users = allUsers;
+const Page = async () => {
+  const users = await getUsers();
   return (
     <>
       <div>
