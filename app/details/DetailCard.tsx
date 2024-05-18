@@ -4,9 +4,6 @@ import React from "react";
 
 const DetailCard = () => {
   const { data, status } = useSession();
-
-  console.log(data);
-
   return (
     <>
       {status === "loading" ? (

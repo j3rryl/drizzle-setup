@@ -1,11 +1,11 @@
 import React from "react";
 import DetailCard from "./DetailCard";
 import { allUsers } from "@/functions";
-
+import ChangeRole from "./ChangeRole";
+// export const dynamic = "force-dynamic";
+export const revalidate = 2;
 const Page = () => {
   const users = allUsers;
-  console.log(users);
-
   return (
     <>
       <div>
@@ -17,7 +17,9 @@ const Page = () => {
               <p>{user?.name}</p>
               <p>{user?.email}</p>
               <p>{user?.role}</p>
-              <hr />
+              <ChangeRole email={user.email} role="admin" />
+              <ChangeRole email={user.email} role="user" />
+              <hr className="text-blue-500" />
             </div>
           );
         })}

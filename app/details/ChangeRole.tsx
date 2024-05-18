@@ -1,10 +1,17 @@
-import React from "react";
+import { updateUser } from "@/functions";
+import { revalidatePath } from "next/cache";
 
-const ChangeRole = () => {
+const ChangeRole = ({ email, role }: { email: string; role: string }) => {
   return (
-    <div>
-      <button>Change Role</button>
-    </div>
+    <form
+      action={async () => {
+        "use server";
+        await updateUser(email, role);
+        revalidatePath("/details");
+      }}
+    >
+      <button type="submit">Change Role to {role}</button>
+    </form>
   );
 };
 
