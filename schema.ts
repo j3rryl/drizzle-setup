@@ -7,7 +7,7 @@ import {
 } from "drizzle-orm/mysql-core";
 import { AdapterAccountType } from "next-auth/adapters";
 
-export const users = mysqlTable("user", {
+export const users = mysqlTable("users", {
   id: varchar("id", { length: 255 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
@@ -22,7 +22,7 @@ export const users = mysqlTable("user", {
 });
 
 export const accounts = mysqlTable(
-  "account",
+  "accounts",
   {
     userId: varchar("userId", { length: 255 })
       .notNull()
@@ -47,7 +47,7 @@ export const accounts = mysqlTable(
   })
 );
 
-export const sessions = mysqlTable("session", {
+export const sessions = mysqlTable("sessions", {
   sessionToken: varchar("sessionToken", { length: 255 }).primaryKey(),
   userId: varchar("userId", { length: 255 })
     .notNull()
@@ -56,7 +56,7 @@ export const sessions = mysqlTable("session", {
 });
 
 export const verificationTokens = mysqlTable(
-  "verificationToken",
+  "verification_tokens",
   {
     identifier: varchar("identifier", { length: 255 }).notNull(),
     token: varchar("token", { length: 255 }).notNull(),

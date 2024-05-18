@@ -3,6 +3,7 @@ import NextAuth from "next-auth";
 import google from "next-auth/providers/google";
 import { db } from "./db";
 import nodemailer from "next-auth/providers/nodemailer";
+import { accounts, sessions, users, verificationTokens } from "./schema";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -21,12 +22,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   callbacks: {
     session({ session, user }) {
-      console.log("callback user", user);
-
       session.user.id = user.id;
       session.user.role = user.role;
       return session;
     },
   },
-  adapter: DrizzleAdapter(db),
+  adapter: DrizzleAdapter(db, {
+    usersTable: users,
+    accountsTable: accounts,
+    sessionsTable: sessions,
+    verificationTokensTable: verificationTokens,
+  }),
 });

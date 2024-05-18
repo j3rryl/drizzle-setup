@@ -6,15 +6,7 @@ declare module "next-auth" {
       role: string | undefined | null;
     } & DefaultSession["user"];
   }
-}
-
-declare module "next-auth" {
-  interface AdapterUser {
-    role?: string;
-  }
-}
-declare module "next-auth" {
   interface User {
-    role?: string;
+    role: string;
   }
 }
